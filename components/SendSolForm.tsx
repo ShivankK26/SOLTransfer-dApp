@@ -18,17 +18,13 @@ const SendSolForm = () => {
             return 
         }
 
-        const formData = new FormData(event.currentTarget);
-        const amount = parseFloat(formData.get('amount') as string);
-        const recipient = formData.get('recipient') as string;
-
         const transaction = new web3.Transaction();
-        const recipientPubKey = new web3.PublicKey(recipient);
+        const recipientPubKey = new web3.PublicKey(event.target.recipient.value)
 
         const sendSolInstruction = web3.SystemProgram.transfer({
             fromPubkey: publicKey,
             toPubkey: recipientPubKey,
-            lamports: LAMPORTS_PER_SOL * amount
+            lamports: LAMPORTS_PER_SOL * event.target.amount.value
         })
 
         transaction.add(sendSolInstruction)
@@ -63,9 +59,9 @@ const SendSolForm = () => {
                 }
                 {
                     txSig ?
-                        <div>
-                            <p>View your transaction on</p>
-                            <a href={link()}>Solana Explorer</a>
+                        <div className='flex justify-center items-center mt-4'>
+                            <p className='text-gray-800 font-normal'>View your transaction on- </p>
+                            <a href={link()} className='text-gray-800 font-normal hover:text-[#512da8]'>Solana Explorer 🚀</a>
                         </div> :
                         null
                 }
