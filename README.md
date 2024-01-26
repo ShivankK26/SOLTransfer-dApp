@@ -23,7 +23,7 @@ Follow these steps to set up and run the Solana Token Sender on your local machi
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/ShivankK26/soltransfer-dapp.git
+   git clone https://github.com/ShivankK26/SOLTransfer-dApp.git
    ```
 
 2. Navigate to the project directory:
